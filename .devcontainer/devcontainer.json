@@ -1,0 +1,38 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/java
+{
+	"name": "Android Java",
+	"build": {
+		"dockerfile": "Dockerfile" //Java 17 & 21
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"customizations": {
+		"codespaces": {
+			"openFiles": [
+				"TeamCode/src/main/java/org/firstinspires/ftc/teamcode/readme.md" //This will open up the folder structure in the sidebar to make it easy to get to the programs
+			]
+		},
+		"vscode": {
+			"extensions": [
+				"-vscjava.vscode-java-pack",
+				"-dbaeumer.vscode-eslint",
+				"GitHub.copilot",
+				"GitHub.vscode-github-actions",
+				"redhat.java",
+				"aaron-bond.better-comments",
+				"eamodio.gitlens",
+				"bierner.github-markdown-preview",
+				"pdconsec.vscode-print",
+				"GitHub.vscode-pull-request-github",
+				"streetsidesoftware.code-spell-checker"
+			],
+			"settings": {
+				"java.server.launchMode": "Standard",
+				"android.sdkLocation": "${ANDROID_SDK_ROOT}", //This is the path to the Android SDK, which is set by the image,
+				"java.jdt.ls.androidSupport.enabled": "on" //Force Android Java detection
+			}
+		}
+	}
+}
