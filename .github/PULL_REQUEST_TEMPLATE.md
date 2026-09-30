@@ -16,3 +16,9 @@ Explain the problem you were solving or the feature you were adding.
 ## Are there any side effects or things to watch for?
 
 Describe anything else that may be affected by this change, including known bugs, risks, or testing notes. If there are none, write “None.”
+
+## Did you update the accompanying documentation for the program(s) under the TeamCode folder? (check one)
+
+- [ ] Of course, I always keep my documentation up to date
+- [ ] My changes was just a bug fix, I didn't change any behaviors
+- [ ] I'll do it later, I promise :pray:
