@@ -192,6 +192,7 @@ public class Camera {
 
   public class AprilTag extends AprilTagDetection {
     public TeamColor teamColor;
+    public boolean scorable;
 
     public AprilTag(AprilTagDetection detection) {
       super(detection.ftcPose, detection.rawPose, detection.robotPose, detection.frameAcquisitionNanoTime,
@@ -204,6 +205,12 @@ public class Camera {
           teamColor = TeamColor.BLUE;
         } else {
           teamColor = TeamColor.UNKNOWN;
+        }
+
+        if (Math.abs(clusterDetection.ftcPose.roll) < 90) {
+          scorable = true;
+        } else {
+          scorable = false;
         }
       } else {
         teamColor = TeamColor.UNKNOWN;
