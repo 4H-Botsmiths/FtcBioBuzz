@@ -8,6 +8,7 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.constants.TeamColor;
 import org.firstinspires.ftc.vision.VisionPortal;
 import org.firstinspires.ftc.vision.VisionPortal.CameraState;
+import org.firstinspires.ftc.vision.apriltag.AprilTagClusterDetection;
 import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 import org.firstinspires.ftc.vision.apriltag.AprilTagProcessor;
 
@@ -86,7 +87,9 @@ public class Camera {
     List<AprilTagDetection> currentDetections = aprilTag.getDetections();
     List<AprilTag> detections = new ArrayList<>();
     for (AprilTagDetection detection : currentDetections) {
-      detections.add(new AprilTag(detection));
+      if (detection instanceof AprilTagClusterDetection) {
+        detections.add(new AprilTag(detection));
+      }
     }
     return detections;
   }
@@ -193,8 +196,18 @@ public class Camera {
     public AprilTag(AprilTagDetection detection) {
       super(detection.ftcPose, detection.rawPose, detection.robotPose, detection.frameAcquisitionNanoTime,
           detection.distanceUnit);
-      //TODO: Determine the team color based off of the April Tag ID's for the season
-      teamColor = TeamColor.UNKNOWN;
+      if (detection instanceof AprilTagClusterDetection) {
+        AprilTagClusterDetection clusterDetection = (AprilTagClusterDetection) detection;
+        if (clusterDetection.metadata.name.startsWith("R")) {
+          teamColor = TeamColor.RED;
+        } else if (clusterDetection.metadata.name.startsWith("B")) {
+          teamColor = TeamColor.BLUE;
+        } else {
+          teamColor = TeamColor.UNKNOWN;
+        }
+      } else {
+        teamColor = TeamColor.UNKNOWN;
+      }
     }
   }
 }
