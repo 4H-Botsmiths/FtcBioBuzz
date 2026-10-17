@@ -33,11 +33,19 @@ public enum DeviceNames {
   EH_SERVO_3("EH_SERVO_3"),
   EH_SERVO_4("EH_SERVO_4"),
 
+  // === CONTROL HUB ANALOG
+  CH_ANALOG_0("CH_ANALOG_0"),
+  CH_ANALOG_1("CH_ANALOG_1"),
+
   // === CONTROL HUB I2C ===
   CH_I2C_0("CH_I2C_0"),
   CH_I2C_1("CH_I2C_1"),
   CH_I2C_2("CH_I2C_2"),
   CH_I2C_3("CH_I2C_3"),
+
+  // === EXPANSION HUB ANALOG
+  EH_ANALOG_0("EH_ANALOG_0"),
+  EH_ANALOG_1("EH_ANALOG_1"),
 
   // === EXPANSION HUB I2C ===
   EH_I2C_0("EH_I2C_0"),
