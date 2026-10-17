@@ -51,11 +51,10 @@ public class TEMPLATE_MecanumDrive extends OpMode {
     y *= 2;
     y += gamepad1.right_trigger * (-gamepad1.left_stick_y / 3);
     y -= gamepad1.left_trigger * (-gamepad1.left_stick_y / 3);
-    double z = 0;
-    //double z = gamepad1.right_stick_x / 3;
-    //z *= 2;
-    //z += gamepad1.right_trigger * (gamepad1.right_stick_x / 3);
-    //z -= gamepad1.left_trigger * (gamepad1.right_stick_x / 3);
+    double z = gamepad1.right_stick_x / 3;
+    z *= 2;
+    z += gamepad1.right_trigger * (gamepad1.right_stick_x / 3);
+    z -= gamepad1.left_trigger * (gamepad1.right_stick_x / 3);
 
     robot.drivetrain.drive(x, y, z); // Pass the adjusted inputs to the drivetrain
 
