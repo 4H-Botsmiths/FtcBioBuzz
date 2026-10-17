@@ -4,10 +4,10 @@ This package contains the constants used throughout the FTC team code.
 
 We use a standard mapping.
 // === CONTROL HUB MOTORS ===
-CH_MOTOR_0("CH_MOTOR_0"),  Left Rear
-CH_MOTOR_1("CH_MOTOR_1"),  Right Rear
-CH_MOTOR_2("CH_MOTOR_2"),  Left Front
-CH_MOTOR_3("CH_MOTOR_3"),  Right Front
+CH_MOTOR_0("CH_MOTOR_0"),  Left Rear mapped as rearLeft
+CH_MOTOR_1("CH_MOTOR_1"),  Right Rear mapped as rearRight
+CH_MOTOR_2("CH_MOTOR_2"),  Left Front mapped as frontLeft
+CH_MOTOR_3("CH_MOTOR_3"),  Right Front mapped as frontRight
 
 // === EXPANSION HUB MOTORS ===
 EH_MOTOR_0("EH_MOTOR_0"),
