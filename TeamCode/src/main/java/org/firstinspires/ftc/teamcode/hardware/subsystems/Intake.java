@@ -11,6 +11,18 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.util.Range;
 
 public class Intake {
+  public Intake(List<CRServo> servos, DcMotorEx... motors) {
+    this.servos = servos != null ? Collections.unmodifiableList(new java.util.ArrayList<>(servos)) : Collections.emptyList();
+    List<Motor> motorList = new java.util.ArrayList<>();
+    if (motors != null) {
+      for (DcMotorEx motor : motors) {
+        if (motor != null) {
+          motorList.add(new Motor(motor));
+        }
+      }
+    }
+    this.motors = Collections.unmodifiableList(motorList);
+  }
   private final List<CRServo> servos;
   private final List<Motor> motors;
 

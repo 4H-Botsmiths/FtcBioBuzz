@@ -21,18 +21,21 @@ public class Robot {
   private final DcMotorEx rearLeft;
   private final DcMotorEx rearRight;
 
-  //private final DcMotorEx leftShooter;
-  //private final DcMotorEx rightShooter;
+  private final DcMotorEx leftShooter;
+  private final DcMotorEx rightShooter;
 
-  //private final CRServo leftIntake;
-  //private final CRServo rightIntake;
+  private final CRServo leftIntake;
+  private final CRServo rightIntake;
+  private final DcMotorEx intakeMotor;
 
   /* ------------------ Subsystems ------------------ */
   public final Drivetrain drivetrain;
-  //public final Intake intake;
-  //public final Shooter shooter;
+  public final Intake intake;
+  public final Shooter shooter;
 
-  /** Initialize the robot's hardware components */
+  /**
+   * Initialize the robot's hardware components
+   */
   public Robot(HardwareMap hardwareMap) {
     // Calculate drive motor PPR (Pulses Per Rotation) based on gear ratio
     // Formula: ((1 + (stage1_ratio)) * (1 + (stage2_ratio))) * base_motor_PPR
@@ -47,21 +50,29 @@ public class Robot {
     this.frontLeft = hardwareMap.get(DcMotorEx.class, DeviceNames.CH_MOTOR_2.getDeviceName());
     this.frontLeft.setDirection(DcMotorSimple.Direction.REVERSE);
     this.frontRight = hardwareMap.get(DcMotorEx.class, DeviceNames.CH_MOTOR_3.getDeviceName());
-
     this.drivetrain = new Drivetrain(this.frontLeft, this.frontRight, this.rearLeft, this.rearRight, drivePPR);
 
-    // Calculate drive motor PPR (Pulses Per Rotation) based on gear ratio
-    // Formula: ((1 + (stage1_ratio)) * (1 + (stage2_ratio))) * base_motor_PPR
-    // Gear ratios: 46:17 (stage 1) and 46:11 (stage
-    // Base motor: 28 PPR (likely a bare motor encoder co
     double shooterPPR = ((((1 + (46.0 / 17.0))) * (1 + (46.0 / 11.0))) * 28.0);
 
-    //this.leftShooter = hardwareMap.get(DcMotorEx.class, DeviceNames.EH_MOTOR_0.getDeviceName());
-    //this.rightShooter = hardwareMap.get(DcMotorEx.class, DeviceNames.EH_MOTOR_1.getDeviceName());
-    //this.shooter = new Shooter(shooterPPR, this.leftShooter, this.rightShooter);
+    DcMotorEx shooterMotorTemp = null;
+    try {
+      shooterMotorTemp = hardwareMap.get(DcMotorEx.class, DeviceNames.EH_MOTOR_0.getDeviceName());
+    } catch (Exception e) {
+    }
+    this.leftShooter = shooterMotorTemp;
+    this.rightShooter = null;
+    this.shooter = new Shooter(shooterPPR, this.leftShooter);
 
-    //this.leftIntake = hardwareMap.get(CRServo.class, DeviceNames.EH_SERVO_0.getDeviceName());
-    //this.rightIntake = hardwareMap.get(CRServo.class, DeviceNames.EH_SERVO_1.getDeviceName());
-    //this.intake = new Intake(this.leftIntake, this.rightIntake);
+    this.leftIntake = hardwareMap.get(CRServo.class, DeviceNames.CH_SERVO_0.getDeviceName());
+    this.rightIntake = hardwareMap.get(CRServo.class, DeviceNames.CH_SERVO_1.getDeviceName());
+    this.rightIntake.setDirection(DcMotorSimple.Direction.REVERSE);
+
+    DcMotorEx intakeMotorTemp = null;
+    try {
+      intakeMotorTemp = hardwareMap.get(DcMotorEx.class, DeviceNames.EH_MOTOR_1.getDeviceName());
+    } catch (Exception e) {
+    }
+    this.intakeMotor = intakeMotorTemp;
+    this.intake = new Intake(java.util.List.of(this.leftIntake, this.rightIntake), this.intakeMotor);
   }
 }
