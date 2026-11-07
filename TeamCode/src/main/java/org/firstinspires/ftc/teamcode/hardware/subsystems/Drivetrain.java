@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.hardware.subsystems;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.hardware.devices.Motor;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -27,7 +28,7 @@ public class Drivetrain {
    * @param rearLeft rear-left drivetrain motor
    * @param rearRight rear-right drivetrain motor
    */
-  public Drivetrain(Motor frontLeft, Motor frontRight, Motor rearLeft, Motor rearRight) {
+  public Driveztrain(Motor frontLeft, Motor frontRight, Motor rearLeft, Motor rearRight) {
     this.frontLeft = frontLeft;
     this.frontRight = frontRight;
     this.rearLeft = rearLeft;
@@ -74,6 +75,25 @@ public class Drivetrain {
     frontRight.setRPM(Range.clip(frontRightPower, -1, 1) * DRIVE_MAX_RPM);
     rearLeft.setRPM(Range.clip(rearLeftPower, -1, 1) * DRIVE_MAX_RPM);
     rearRight.setRPM(Range.clip(rearRightPower, -1, 1) * DRIVE_MAX_RPM);
+  }
+  public void drive(double x, double y, double rotate, Telemetry telemetry) {
+    double frontLeftPower = y + x + rotate;
+    double frontRightPower = y - x - rotate;
+    double rearLeftPower = y - x + rotate;
+    double rearRightPower = y + x - rotate;
+    telemetry.addData("frontLeftPower", frontLeftPower);
+    telemetry.update();
+    telemetry.addData("frontRightPower", frontRightPower);
+    telemetry.update();
+
+    frontLeft.setRPM(Range.clip(frontLeftPower, -1, 1) * DRIVE_MAX_RPM);
+    frontRight.setRPM(Range.clip(frontRightPower, -1, 1) * DRIVE_MAX_RPM);
+    rearLeft.setRPM(Range.clip(rearLeftPower, -1, 1) * DRIVE_MAX_RPM);
+    rearRight.setRPM(Range.clip(rearRightPower, -1, 1) * DRIVE_MAX_RPM);
+    telemetry.addData("frontLeftPower", frontLeft.getPower());
+    telemetry.update();
+    telemetry.addData("frontRightPower", frontRight.getPower());
+    telemetry.update();
   }
 
   /**

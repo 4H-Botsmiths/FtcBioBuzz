@@ -45,18 +45,18 @@ public class TEMPLATE_DriveForward extends OpMode {
    */
   @Override
   public void loop() {
-    if (timer.milliseconds() < 250) { // Drive forward for the first 2 seconds
-      robot.drivetrain.drive(0, 0.25, 0);
+    if (timer.milliseconds() < 300) { // Drive forward for the first 1 seconds
+      robot.drivetrain.drive(0, 0.25, 0, telemetry);
     } //else{
       //robot.drivetrain.drive(0, 0, 0);
     //}
-    else if (timer.milliseconds() < 500) { // Drive backwards for the first 2 seconds
-       robot.drivetrain.drive(0, -0.25, 0);
+    else if (timer.milliseconds() < 600) { // Drive backwards for the first 1 seconds
+       robot.drivetrain.drive(0, -0.25, 0, telemetry);
     } //else {
       //robot.drivetrain.drive(0, 0, 0);
     //}
     else {
-      robot.drivetrain.drive(0, 0, 0);
+      robot.drivetrain.drive(0, 0, 0, telemetry);
     }
   }
 
