@@ -28,7 +28,7 @@ public class Drivetrain {
    * @param rearLeft rear-left drivetrain motor
    * @param rearRight rear-right drivetrain motor
    */
-  public Driveztrain(Motor frontLeft, Motor frontRight, Motor rearLeft, Motor rearRight) {
+  public Drivetrain(Motor frontLeft, Motor frontRight, Motor rearLeft, Motor rearRight) {
     this.frontLeft = frontLeft;
     this.frontRight = frontRight;
     this.rearLeft = rearLeft;
