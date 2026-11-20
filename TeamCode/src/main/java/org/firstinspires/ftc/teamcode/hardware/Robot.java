@@ -33,6 +33,8 @@ public class Robot {
   public final Intake intake;
   public final Shooter shooter;
 
+
+
   /**
    * Initialize the robot's hardware components
    */

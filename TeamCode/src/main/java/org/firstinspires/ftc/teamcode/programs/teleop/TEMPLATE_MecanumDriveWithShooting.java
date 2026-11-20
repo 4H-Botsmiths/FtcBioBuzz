@@ -51,10 +51,11 @@ public class TEMPLATE_MecanumDriveWithShooting extends OpMode {
       robot.shooter.setPower(0.0);  // Off
     }
 
-    /* ------------------ Combined Intake & Outtake (Gamepad 2) ------------------ */
+
+/* ------------------ Combined Intake & Outtake (Gamepad 2) ------------------ */
     if (gamepad2.a) {
       robot.intake.setPowerAll(1.0);  // Intake forward
-    } else if (gamepad2.b) {
+    } else if (gamepad2.y) {
       robot.intake.setPowerAll(-1.0); // Outtake reverse
     } else {
       robot.intake.stopAll();         // Stop
