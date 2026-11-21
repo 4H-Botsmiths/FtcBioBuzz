@@ -16,22 +16,22 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  */
 public class Robot {
   /* ------------------ Devices ------------------ */
-  private final DcMotorEx frontLeft;
-  private final DcMotorEx frontRight;
-  private final DcMotorEx rearLeft;
-  private final DcMotorEx rearRight;
+  private final DcMotorEx frontLeft;//front left yellow jacket motor
+  private final DcMotorEx frontRight;//front right yellow jacket motor
+  private final DcMotorEx rearLeft;//rear left yellow jacket motor
+  private final DcMotorEx rearRight;// rear right yellow jacket motor
 
-  private final DcMotorEx leftShooter;
-  private final DcMotorEx rightShooter;
+  private final DcMotorEx leftShooter;// left shooter motor: yellow jacket
+  private final DcMotorEx rightShooter;// right shooter motor: yellow jacket
 
-  private final CRServo leftIntake;
-  private final CRServo rightIntake;
-  private final DcMotorEx intakeMotor;
+  private final CRServo leftIntake; // left intake motor: gobulida
+  private final CRServo rightIntake;// right intake motor: gobulida
+  private final DcMotorEx intakeMotor;// intake motor: gobulida
 
   /* ------------------ Subsystems ------------------ */
-  public final Drivetrain drivetrain;
-  public final Intake intake;
-  public final Shooter shooter;
+  public final Drivetrain drivetrain;// drive train motor: gobulida
+  public final Intake intake;// intake motor:yellow jacket
+  public final Shooter shooter;// shooter motor: gobulida
 
 
 
