@@ -13,12 +13,21 @@ public class Shooter {
   public Shooter(Motor... motors) {
     this.motors = List.of(motors);
   }
-
   public Shooter(double ppr, DcMotorEx... motors) {
-    this.motors = List.of();
-    for (DcMotorEx motor : motors)
-      this.motors.add(new Motor(motor, ppr));
+    this.motors = new java.util.ArrayList<>();
+    if (motors != null) {
+      for (DcMotorEx motor : motors) {
+        if (motor != null) {
+          this.motors.add(new Motor(motor, ppr));
+        }
+      }
+    }
   }
+  //public Shooter(double ppr, DcMotorEx... motors) {
+    //this.motors = List.of();
+    //for (DcMotorEx motor : motors)
+      //this.motors.add(new Motor(motor, ppr));
+  //}
 
   // Motor-like helpers (delegate to both motors)
 
